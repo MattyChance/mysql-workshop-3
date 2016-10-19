@@ -1,0 +1,77 @@
+Exercise 11 (Challenge)
+
+Create a data model representing a Store with Inventory, Customers and Invoices
+This model should provide answers to the following questions:
+What is the Store's income within a specific date range?
+What is the Store's top selling Inventory product?
+Which company produces the top selling Inventory product?
+What is the top refunded Inventory product?
+Which products should be taken out from the Store's Inventory?
+Which companies should the Store stop selling products from?
+What is the amount of Internal (Canadian) vs. External sales?
+How many of a specific product remains in Inventory for a specific date?
+
+mysql> SHOW tables;
++-------------------+
+| Tables_in_myStore |
++-------------------+
+| customer          |
+| manufacturer      |
+| productInventory  |
+| sales             |
+| salesProducts     |
++-------------------+
+5 rows in set (0.00 sec)
+
+mysql> describe customer;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| id            | int(11)     | NO   | PRI | NULL    | auto_increment |
+| customer_name | varchar(50) | YES  |     | NULL    |                |
+| orgin         | varchar(20) | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> describe manufacturer;
++-------------------+--------------+------+-----+---------+----------------+
+| Field             | Type         | Null | Key | Default | Extra          |
++-------------------+--------------+------+-----+---------+----------------+
+| id                | int(11)      | NO   | PRI | NULL    | auto_increment |
+| manufacturer_name | varchar(255) | YES  |     | NULL    |                |
+| country           | varchar(50)  | YES  |     | NULL    |                |
++-------------------+--------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> describe productInventory;
++------------------+--------------+------+-----+---------+----------------+
+| Field            | Type         | Null | Key | Default | Extra          |
++------------------+--------------+------+-----+---------+----------------+
+| id               | int(11)      | NO   | PRI | NULL    | auto_increment |
+| produce_name     | varchar(255) | YES  |     | NULL    |                |
+| manufacturer_id  | int(11)      | YES  |     | NULL    |                |
+| current_stock    | int(11)      | YES  |     | NULL    |                |
+| margin_index     | int(11)      | YES  |     | NULL    |                |
+| refundment_times | int(11)      | YES  |     | NULL    |                |
++------------------+--------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> describe sales;
++--------------------+----------+------+-----+---------+----------------+
+| Field              | Type     | Null | Key | Default | Extra          |
++--------------------+----------+------+-----+---------+----------------+
+| id                 | int(11)  | NO   | PRI | NULL    | auto_increment |
+| date               | datetime | YES  |     | NULL    |                |
+| transaction_amount | int(11)  | YES  |     | NULL    |                |
+| customer_id        | int(11)  | YES  |     | NULL    |                |
++--------------------+----------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> describe salesProducts;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| invoice_id | int(11) | YES  |     | NULL    |       |
+| product_id | int(11) | YES  |     | NULL    |       |
++------------+---------+------+-----+---------+-------+
+2 rows in set (0.00 sec)

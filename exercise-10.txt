@@ -1,0 +1,7 @@
+Exercise 10
+
+Transform all work emails into home emails and vice versa. BE CAREFUL ;)
+
+mysql> select replace(ElectronicMail.type, 'work', 'laterHome') from ElectronicMail;                                             
+mysql> select replace(ElectronicMail.type, 'home', 'work') from ElectronicMail;
+mysql> select replace(ElectronicMail.type, 'laterHome', 'home') from ElectronicMail;

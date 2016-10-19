@@ -1,0 +1,10 @@
+Exercise 5
+
+List all of the emails associated to AddressBook.id = 100
+mysql> select email from Account join AddressBook ab on ab.accountId = Account.id where ab.id = 100;
++----------------------------------+
+| email                            |
++----------------------------------+
+| dapibus.quam@interdumligulaeu.ca |
++----------------------------------+
+1 row in set (0.00 sec)

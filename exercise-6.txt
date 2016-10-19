@@ -1,0 +1,12 @@
+Exercise 6
+
+List all of the phone numbers for Jenkins, Charlotte
+mysql> select content from Phone
+    -> join Entry on Entry.id = Phone.entryId
+    -> where Entry.lastName = 'Jenkins' and Entry.firstName = 'Charlotte';
++----------------+
+| content        |
++----------------+
+| (110) 167-3420 |
+| (605) 175-1334 |
++----------------+
